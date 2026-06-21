@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter to Dad • Father's Day 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .display-font {
+            font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .letter-font {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #f97316;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .dad-badge {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .dad-badge:hover {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        .paper {
+            background: #fffef7;
+            box-shadow: 0 10px 30px -10px rgb(15 23 42 / 0.1),
+                        inset 0 0 0 1px #f5e8c7;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <!-- NAV -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-orange-500 rounded-2xl flex items-center justify-center text-white text-xl shadow-inner">
+                    ✉️
+                </div>
+                <div>
+                    <span class="font-semibold text-xl tracking-tighter display-font">LETTER TO DAD</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-x-6 text-sm font-medium">
+                <a href="index.html" class="nav-link text-slate-700 hover:text-orange-600">Home</a>
+                <a href="gallery.html" class="nav-link text-slate-700 hover:text-orange-600">Memory Vault</a>
+                <div class="w-px h-4 bg-slate-200"></div>
+                <button onclick="launchConfetti()" 
+                        class="flex items-center gap-x-2 text-xs px-4 py-1.5 rounded-full bg-orange-100 hover:bg-orange-200 text-orange-600 font-medium transition-colors">
+                    <i class="fa-solid fa-magic mr-1"></i>
+                    <span>MAKE IT GOOFY</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- LETTER CONTENT -->
+    <div class="max-w-3xl mx-auto px-6 pt-12 pb-20">
+        <div class="paper rounded-3xl p-10 md:p-14 shadow-xl border border-amber-100">
+            
+            <!-- Header -->
+            <div class="flex justify-between items-start mb-10">
+                <div>
+                    <div class="text-xs tracking-[3px] font-mono text-orange-500">FATHER'S DAY • JUNE 2026</div>
+                    <div class="text-6xl font-bold tracking-tighter display-font mt-1">Dear Dad,</div>
+                </div>
+                <div class="text-right text-xs text-slate-400 hidden md:block">
+                    From your kid<br>
+                    (the one who still calls when the WiFi dies)
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="letter-font text-[17px] leading-relaxed text-slate-700 space-y-6">
+                <p>
+                    I made you a whole website. That should tell you something. 
+                    Most people just send a text or buy a tie. I went full dad-joke + photo evidence mode. 
+                    You're welcome.
+                </p>
+                
+                <p>
+                    Thank you for being the kind of dad who shows up. Not just for the big stuff — 
+                    though you were there for that too — but for the boring Tuesday nights when I needed 
+                    someone to tell me the lawnmower sound was "probably fine" even when it clearly wasn't.
+                </p>
+                
+                <p>
+                    You taught me how to fix things, how to laugh at myself, and how to tell a joke so bad 
+                    that people groan and secretly love it. That last one might be your greatest legacy.
+                </p>
+
+                <div class="py-4">
+                    <div class="text-xs uppercase tracking-widest text-orange-500 mb-3 font-semibold">A few things I'm still blaming you for (lovingly):</div>
+                    <ul class="space-y-2 text-base">
+                        <li class="flex gap-x-3"><span class="text-orange-400 mt-1">→</span> My terrible sense of direction (you said "just head north")</li>
+                        <li class="flex gap-x-3"><span class="text-orange-400 mt-1">→</span> The way I now explain everything with hand gestures</li>
+                        <li class="flex gap-x-3"><span class="text-orange-400 mt-1">→</span> Thinking I can "just take a look" at any broken appliance and fix it</li>
+                        <li class="flex gap-x-3"><span class="text-orange-400 mt-1">→</span> My addiction to bad puns (this one's on you, old man)</li>
+                    </ul>
+                </div>
+
+                <p>
+                    But mostly I want to say thank you for the stuff that actually matters. 
+                    For making our house feel safe. For showing up even when you were tired. 
+                    For being the person I still call when something breaks — or when I just need to hear 
+                    that everything's going to be okay, even if we both know you're just winging it too.
+                </p>
+                
+                <p>
+                    You're not perfect. None of us are. But you're mine, and that's better than perfect.
+                </p>
+            </div>
+
+            <!-- Badges -->
+            <div class="mt-10 pt-8 border-t border-amber-200">
+                <div class="text-xs uppercase tracking-widest text-orange-500 mb-4 font-semibold">OFFICIAL DAD CERTIFICATIONS</div>
+                <div class="flex flex-wrap gap-3">
+                    <div class="dad-badge inline-flex items-center gap-x-2 px-4 py-2 bg-white border border-amber-200 rounded-2xl text-sm">
+                        <i class="fa-solid fa-tools text-orange-500"></i>
+                        <span class="font-medium">Master of "I'll Just Take a Look"</span>
+                    </div>
+                    <div class="dad-badge inline-flex items-center gap-x-2 px-4 py-2 bg-white border border-amber-200 rounded-2xl text-sm">
+                        <i class="fa-solid fa-grin-tears text-orange-500"></i>
+                        <span class="font-medium">Professional Dad Joke Practitioner</span>
+                    </div>
+                    <div class="dad-badge inline-flex items-center gap-x-2 px-4 py-2 bg-white border border-amber-200 rounded-2xl text-sm">
+                        <i class="fa-solid fa-heart text-orange-500"></i>
+                        <span class="font-medium">World's Okayest but Actually Best Dad</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Closing -->
+            <div class="mt-12 text-right">
+                <div class="text-2xl tracking-tight display-font">Love you, Dad.</div>
+                <div class="text-sm text-slate-500 mt-1">Your favorite (and only) kid • 2026</div>
+                
+                <button onclick="launchConfetti()" 
+                        class="mt-6 text-xs px-5 py-2 rounded-2xl border border-orange-200 hover:bg-orange-50 text-orange-600 flex items-center gap-x-2 mx-auto md:ml-auto md:mr-0 transition-colors">
+                    <i class="fa-solid fa-party-horn"></i>
+                    <span>One more round of confetti for the old man</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer note -->
+        <div class="text-center mt-8 text-xs text-slate-400">
+            P.S. There's also a photo vault and a goofy homepage. I went a little overboard. 
+            You'll survive.
+        </div>
+    </div>
+
+    <script>
+        function launchConfetti() {
+            const emojis = ['🎉', '❤️', '🛠️', '😂', '👨‍👧‍👦', '🏆'];
+            for (let i = 0; i < 35; i++) {
+                const confetto = document.createElement('div');
+                confetto.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                confetto.style.position = 'fixed';
+                confetto.style.left = Math.random() * window.innerWidth + 'px';
+                confetto.style.top = '-30px';
+                confetto.style.fontSize = (14 + Math.random() * 18) + 'px';
+                confetto.style.zIndex = '99999';
+                confetto.style.pointerEvents = 'none';
+                confetto.style.transition = `transform ${2.5 + Math.random()}s cubic-bezier(0.22, 1, 0.36, 1), opacity 3s`;
+                confetto.style.opacity = (Math.random() * 0.5 + 0.6).toFixed(2);
+                document.body.appendChild(confetto);
+                
+                setTimeout(() => {
+                    confetto.style.transform = `translateY(${window.innerHeight + 120}px) rotate(${Math.random()*160 - 50}deg)`;
+                    confetto.style.opacity = '0';
+                }, 30);
+                
+                setTimeout(() => {
+                    if (confetto.parentNode) confetto.parentNode.removeChild(confetto);
+                }, 3800);
+            }
+        }
+        
+        // Simple keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (e.key.toLowerCase() === 'c') {
+                launchConfetti();
+            }
+        });
+        
+        console.log('%c[Father\'s Day Site] Letter page loaded. Phone-friendly, ready for edits.', 'color:#64748b');
+    </script>
+</body>
+</html>
