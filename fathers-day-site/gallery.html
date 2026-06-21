@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dad's Memory Vault • Father's Day 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .display-font {
+            font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .memory-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px -12px rgb(15 23 42 / 0.15);
+        }
+        
+        .memory-card:hover .memory-overlay {
+            opacity: 1;
+        }
+
+        .memory-placeholder {
+            background: linear-gradient(145deg, #f8fafc, #f1e7ff);
+            border: 2px dashed #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        
+        .memory-placeholder:hover {
+            border-color: #f97316;
+            background: linear-gradient(145deg, #fff7ed, #fefce8);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #f97316;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .vinyl-record {
+            transition: transform 0.1s linear;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3),
+                        inset 0 4px 6px -1px rgb(255 255 255 / 0.2),
+                        inset 0 -4px 6px -1px rgb(0 0 0 / 0.3);
+        }
+        
+        .vinyl-record.playing {
+            animation: vinyl-spin 2.5s linear infinite;
+        }
+
+        @keyframes vinyl-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .modal {
+            animation: modalPop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .dad-joke {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <!-- NAV -->
+    <nav class="bg-white border-b border-slate-100 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-orange-500 rounded-2xl flex items-center justify-center text-white text-xl shadow-inner">
+                    📸
+                </div>
+                <div>
+                    <span class="font-semibold text-xl tracking-tighter display-font">THE DAD VAULT</span>
+                    <span class="text-[10px] font-mono text-orange-500 tracking-[2px] block -mt-1">IRREFUTABLE EVIDENCE</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-x-6 text-sm font-medium">
+                <a href="index.html" class="nav-link text-slate-700 hover:text-orange-600">← Home</a>
+                <a href="letter.html" class="nav-link text-slate-700 hover:text-orange-600">Letter to Dad</a>
+                <div class="w-px h-4 bg-slate-200"></div>
+                <button onclick="launchConfetti()" 
+                        class="flex items-center gap-x-2 text-xs px-4 py-1.5 rounded-full bg-orange-100 hover:bg-orange-200 text-orange-600 font-medium transition-colors">
+                    <i class="fa-solid fa-magic mr-1"></i>
+                    <span>MAKE IT GOOFY</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <div class="max-w-6xl mx-auto px-6 pt-12 pb-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-y-4">
+            <div>
+                <span class="px-4 py-1 text-xs font-mono tracking-[3px] bg-orange-100 text-orange-600 rounded-full">CHAPTER 03 • ARCHIVES</span>
+                <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter display-font mt-3">The Dad Vault</h1>
+                <p class="mt-3 text-xl text-slate-600 max-w-md">Irrefutable photographic evidence that you are, in fact, the greatest.</p>
+            </div>
+            
+            <div class="text-right">
+                <div class="inline-flex items-center gap-x-2 text-xs px-4 h-9 rounded-2xl bg-white border border-slate-200 text-slate-500">
+                    <i class="fa-solid fa-images"></i>
+                    <span>6 slots ready • add your photos below</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY GRID -->
+    <div class="max-w-6xl mx-auto px-6 pb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Memory Slot 1 -->
+            <div class="memory-card bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm group">
+                <div class="memory-placeholder aspect-video flex flex-col items-center justify-center p-8 text-center">
+                    <!-- PLACE IMAGE FILE HERE -->
+                    <!-- 
+                        INSTRUCTIONS:
+                        1. Put your photo in the assets/images/ folder (e.g. fishing-trip.jpg)
+                        2. Replace this entire <div class="memory-placeholder..."> block with:
+                        
+                        <img src="assets/images/fishing-trip.jpg" 
+                             alt="Dad and me fishing at the lake - summer 2023" 
+                             class="w-full h-full object-cover">
+                        
+                        3. Update the caption below too!
+                    -->
+                    <div class="text-6xl mb-4 opacity-40">🎣</div>
+                    <div class="font-mono text-xs tracking-widest text-slate-400 mb-1">SLOT 01</div>
+                    <div class="text-sm font-medium text-slate-500">Click to add photo</div>
+                    <div class="text-[10px] text-orange-400 mt-1">assets/images/your-photo-1.jpg</div>
+                </div>
+                <div class="p-5">
+                    <div class="font-semibold text-lg tracking-tight">The Great Fishing Disaster of 2023</div>
+                    <div class="text-sm text-slate-500 mt-1">You swore the fish were "this big" but the only thing we caught was a cold and a lifetime of jokes.</div>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs px-3 py-1 bg-slate-100 rounded-full text-slate-500">Lake Whatever</div>
+                        <button onclick="openModal(0)" class="text-xs text-orange-500 hover:text-orange-600 flex items-center gap-x-1 font-medium">
+                            VIEW <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-0.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Slot 2 -->
+            <div class="memory-card bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm group">
+                <div class="memory-placeholder aspect-video flex flex-col items-center justify-center p-8 text-center">
+                    <!-- PLACE IMAGE FILE HERE -->
+                    <div class="text-6xl mb-4 opacity-40">🍔</div>
+                    <div class="font-mono text-xs tracking-widest text-slate-400 mb-1">SLOT 02</div>
+                    <div class="text-sm font-medium text-slate-500">Click to add photo</div>
+                    <div class="text-[10px] text-orange-400 mt-1">assets/images/your-photo-2.jpg</div>
+                </div>
+                <div class="p-5">
+                    <div class="font-semibold text-lg tracking-tight">World's Okayest Grill Master</div>
+                    <div class="text-sm text-slate-500 mt-1">You said "trust the process" while the burgers were still pink. We survived. Barely. The dog still won't look at you the same.</div>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs px-3 py-1 bg-slate-100 rounded-full text-slate-500">Backyard BBQ</div>
+                        <button onclick="openModal(1)" class="text-xs text-orange-500 hover:text-orange-600 flex items-center gap-x-1 font-medium">
+                            VIEW <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-0.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Slot 3 -->
+            <div class="memory-card bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm group">
+                <div class="memory-placeholder aspect-video flex flex-col items-center justify-center p-8 text-center">
+                    <!-- PLACE IMAGE FILE HERE -->
+                    <div class="text-6xl mb-4 opacity-40">🛠️</div>
+                    <div class="font-mono text-xs tracking-widest text-slate-400 mb-1">SLOT 03</div>
+                    <div class="text-sm font-medium text-slate-500">Click to add photo</div>
+                    <div class="text-[10px] text-orange-400 mt-1">assets/images/your-photo-3.jpg</div>
+                </div>
+                <div class="p-5">
+                    <div class="font-semibold text-lg tracking-tight">"I'll Just Take a Look" Energy</div>
+                    <div class="text-sm text-slate-500 mt-1">You opened the hood and somehow the car started working again. We still don't know what you did. We're afraid to ask.</div>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs px-3 py-1 bg-slate-100 rounded-full text-slate-500">Garage • 2024</div>
+                        <button onclick="openModal(2)" class="text-xs text-orange-500 hover:text-orange-600 flex items-center gap-x-1 font-medium">
+                            VIEW <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-0.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Slot 4 -->
+            <div class="memory-card bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm group">
+                <div class="memory-placeholder aspect-video flex flex-col items-center justify-center p-8 text-center">
+                    <!-- PLACE IMAGE FILE HERE -->
+                    <div class="text-6xl mb-4 opacity-40">📺</div>
+                    <div class="font-mono text-xs tracking-widest text-slate-400 mb-1">SLOT 04</div>
+                    <div class="text-sm font-medium text-slate-500">Click to add photo</div>
+                    <div class="text-[10px] text-orange-400 mt-1">assets/images/your-photo-4.jpg</div>
+                </div>
+                <div class="p-5">
+                    <div class="font-semibold text-lg tracking-tight">The Remote Control Incident</div>
+                    <div class="text-sm text-slate-500 mt-1">You hid the remote so no one could change the channel. We staged an intervention. You won. As usual.</div>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs px-3 py-1 bg-slate-100 rounded-full text-slate-500">Living Room • Every Sunday</div>
+                        <button onclick="openModal(3)" class="text-xs text-orange-500 hover:text-orange-600 flex items-center gap-x-1 font-medium">
+                            VIEW <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-0.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Slot 5 -->
+            <div class="memory-card bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm group">
+                <div class="memory-placeholder aspect-video flex flex-col items-center justify-center p-8 text-center">
+                    <!-- PLACE IMAGE FILE HERE -->
+                    <div class="text-6xl mb-4 opacity-40">🏆</div>
+                    <div class="font-mono text-xs tracking-widest text-slate-400 mb-1">SLOT 05</div>
+                    <div class="text-sm font-medium text-slate-500">Click to add photo</div>
+                    <div class="text-[10px] text-orange-400 mt-1">assets/images/your-photo-5.jpg</div>
+                </div>
+                <div class="p-5">
+                    <div class="font-semibold text-lg tracking-tight">The Time You Were Actually Cool</div>
+                    <div class="text-sm text-slate-500 mt-1">We have one photo where you look like a movie star instead of a dad who just woke up from a nap. Treasure it.</div>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs px-3 py-1 bg-slate-100 rounded-full text-slate-500">Rare Sighting</div>
+                        <button onclick="openModal(4)" class="text-xs text-orange-500 hover:text-orange-600 flex items-center gap-x-1 font-medium">
+                            VIEW <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-0.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Slot 6 -->
+            <div class="memory-card bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm group">
+                <div class="memory-placeholder aspect-video flex flex-col items-center justify-center p-8 text-center">
+                    <!-- PLACE IMAGE FILE HERE -->
+                    <div class="text-6xl mb-4 opacity-40">❤️</div>
+                    <div class="font-mono text-xs tracking-widest text-slate-400 mb-1">SLOT 06</div>
+                    <div class="text-sm font-medium text-slate-500">Click to add photo</div>
+                    <div class="text-[10px] text-orange-400 mt-1">assets/images/your-photo-6.jpg</div>
+                </div>
+                <div class="p-5">
+                    <div class="font-semibold text-lg tracking-tight">Just Us (The Good One)</div>
+                    <div class="text-sm text-slate-500 mt-1">This is the photo we actually like. No silly faces. No photobombing. Just you being the best dad. We love this one the most.</div>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs px-3 py-1 bg-orange-100 text-orange-600 rounded-full font-medium">Our favorite</div>
+                        <button onclick="openModal(5)" class="text-xs text-orange-500 hover:text-orange-600 flex items-center gap-x-1 font-medium">
+                            VIEW <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-0.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Slot 7 (NEW) -->
+            <div class="memory-card bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm group">
+                <div class="memory-placeholder aspect-video flex flex-col items-center justify-center p-8 text-center">
+                    <!-- PLACE IMAGE FILE HERE -->
+                    <div class="text-6xl mb-4 opacity-40">📸</div>
+                    <div class="font-mono text-xs tracking-widest text-slate-400 mb-1">SLOT 07</div>
+                    <div class="text-sm font-medium text-slate-500">Click to add photo</div>
+                    <div class="text-[10px] text-orange-400 mt-1">assets/images/your-photo-7.jpg</div>
+                </div>
+                <div class="p-5">
+                    <div class="font-semibold text-lg tracking-tight">The One We Don't Talk About</div>
+                    <div class="text-sm text-slate-500 mt-1">That trip where everything went wrong but we still laugh about it 10 years later. You were the hero who somehow made it fun anyway.</div>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs px-3 py-1 bg-slate-100 rounded-full text-slate-500">Legendary Fail</div>
+                        <button onclick="openModal(6)" class="text-xs text-orange-500 hover:text-orange-600 flex items-center gap-x-1 font-medium">
+                            VIEW <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-0.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <p class="text-xs text-slate-400">7 slots ready. Want more? Just copy any card and change the numbers. Dead simple.</p>
+        </div>
+    </div>
+
+    <!-- MUSIC + DAD JOKE SECTION -->
+    <div class="bg-white border-y border-slate-100 py-12">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-5 gap-x-8 gap-y-10 items-center">
+            
+            <!-- Music -->
+            <div class="md:col-span-3">
+                <div class="flex items-center gap-x-4">
+                    <div onclick="toggleMusic(2)" 
+                         class="vinyl-record w-16 h-16 bg-gradient-to-br from-slate-700 via-slate-900 to-black border border-slate-600 rounded-full flex-shrink-0 flex items-center justify-center cursor-pointer shadow-xl">
+                        <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold">Page 2 Soundtrack</div>
+                        <div class="text-xs text-slate-500">LEAVE SONG 2 HERE • loops automatically</div>
+                        
+                        <button onclick="toggleMusic(2)" id="music-btn-2"
+                                class="mt-3 px-5 py-1.5 text-xs font-medium bg-slate-900 hover:bg-black text-white rounded-2xl flex items-center gap-x-2 transition-colors">
+                            <i class="fa-solid fa-play mr-1.5" id="music-icon-2"></i>
+                            <span id="music-text-2">PLAY MEMORY SONG</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <audio id="dad-song-2" loop>
+                    <!-- 
+                        LEAVE SONG 2 HERE
+                        1. Put a different MP3 in assets/audio/ folder
+                        2. Name it whatever (e.g. memory-song.mp3)
+                        3. Update the src below to match your filename
+                        4. MP3 recommended, ~5MB max for quick load
+                    -->
+                    <source src="assets/audio/dads-song-page2.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            
+            <!-- Dad Joke rotator -->
+            <div class="md:col-span-2 bg-slate-900 text-white rounded-3xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="text-xs tracking-widest font-mono text-orange-400">BONUS CONTENT</div>
+                    <button onclick="newDadJoke()" 
+                            class="text-xs px-3 py-1 rounded-full border border-white/20 hover:bg-white/10 flex items-center gap-x-1 transition-colors">
+                        <i class="fa-solid fa-sync-alt mr-1 text-[10px]"></i>
+                        <span>NEW JOKE</span>
+                    </button>
+                </div>
+                <div id="dad-joke-text" class="dad-joke text-lg leading-tight font-medium min-h-[58px]">
+                    Why don't eggs tell each other jokes? They'd crack each other up.
+                </div>
+                <div class="text-[10px] text-slate-400 mt-4">— Dad's daily special • Click "NEW JOKE" for more punishment</div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- LOVING MESSAGE -->
+    <div class="max-w-3xl mx-auto px-6 py-16 text-center">
+        <div class="text-6xl mb-6">❤️</div>
+        <h3 class="text-4xl font-semibold tracking-tighter display-font mb-4">We love you more than words (or this website) can say.</h3>
+        <p class="text-lg text-slate-600 max-w-md mx-auto">Thanks for being the kind of dad who makes every day feel like a goofy adventure worth remembering. You're the best. No debate.</p>
+        
+        <div class="mt-10 text-xs text-slate-400">
+            P.S. The confetti button is still here if you need more chaos →
+            <button onclick="launchConfetti()" class="underline hover:text-orange-500 ml-1">do it again</button>
+        </div>
+    </div>
+
+    <!-- IMAGE MODAL -->
+    <div id="image-modal" onclick="closeModal()" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl">
+            <div class="relative">
+                <img id="modal-image" class="w-full max-h-[70vh] object-contain bg-slate-100" alt="Dad memory">
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-xl text-slate-700 shadow">×</button>
+            </div>
+            <div class="p-6">
+                <div id="modal-caption" class="font-semibold text-xl tracking-tight"></div>
+                <div id="modal-subcaption" class="text-sm text-slate-500 mt-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind already loaded via CDN
+        
+        // Dad jokes array
+        const dadJokes = [
+            "Why don't eggs tell each other jokes? They'd crack each other up.",
+            "I told my dad I was cold. He said 'Go stand in the corner, it's 90 degrees.'",
+            "What do you call a fake noodle? An impasta.",
+            "Why did the scarecrow win an award? Because he was outstanding in his field!",
+            "I'm reading a book about anti-gravity. It's impossible to put down.",
+            "Why don't skeletons fight each other? They don't have the guts.",
+            "What do you call cheese that isn't yours? Nacho cheese.",
+            "I only know 25 letters of the alphabet. I don't know y.",
+            "Why did the bicycle fall over? Because it was two tired.",
+            "Parallel lines have so much in common. It's a shame they'll never meet.",
+            "Why do melons have big weddings? Because they cantaloupe.",
+            "What did the ocean say to the beach? Nothing, it just waved.",
+            "Why did the man put his money in the blender? He wanted to make some liquid assets.",
+            "I asked my dad for his best dad joke. He said 'You.'",
+            "Why don't you ever play hide and seek with mountains? Because they're always peaking."
+        ];
+        
+        let currentJokeIndex = 0;
+        
+        function newDadJoke() {
+            const jokeEl = document.getElementById('dad-joke-text');
+            currentJokeIndex = (currentJokeIndex + 1) % dadJokes.length;
+            
+            jokeEl.style.transition = 'none';
+            jokeEl.style.opacity = '0';
+            
+            setTimeout(() => {
+                jokeEl.textContent = dadJokes[currentJokeIndex];
+                jokeEl.style.transition = 'opacity 0.3s ease';
+                jokeEl.style.opacity = '1';
+            }, 120);
+        }
+        
+        // Music for page 2
+        let isPlaying2 = false;
+        const audio2 = document.getElementById('dad-song-2');
+        const vinyl2 = document.querySelector('.vinyl-record'); // the only vinyl on this page
+        const musicBtn2 = document.getElementById('music-btn-2');
+        const musicIcon2 = document.getElementById('music-icon-2');
+        const musicText2 = document.getElementById('music-text-2');
+        
+        function toggleMusic(page) {
+            if (page === 2) {
+                if (!audio2) return;
+                
+                if (!isPlaying2) {
+                    audio2.play().then(() => {
+                        isPlaying2 = true;
+                        if (vinyl2) vinyl2.classList.add('playing');
+                        if (musicIcon2) musicIcon2.classList.replace('fa-play', 'fa-pause');
+                        if (musicText2) musicText2.textContent = 'PAUSE SONG';
+                        if (musicBtn2) musicBtn2.style.background = '#111827';
+                    }).catch(() => {
+                        const msg = document.createElement('div');
+                        msg.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs px-5 py-3 rounded-2xl shadow-xl flex items-center gap-x-2 z-[200]';
+                        msg.innerHTML = `<i class="fa-solid fa-info-circle mr-2"></i> Put your song in assets/audio/dads-song-page2.mp3 then try again`;
+                        document.body.appendChild(msg);
+                        setTimeout(() => msg.remove(), 4200);
+                    });
+                } else {
+                    audio2.pause();
+                    isPlaying2 = false;
+                    if (vinyl2) vinyl2.classList.remove('playing');
+                    if (musicIcon2) musicIcon2.classList.replace('fa-pause', 'fa-play');
+                    if (musicText2) musicText2.textContent = 'PLAY MEMORY SONG';
+                    if (musicBtn2) musicBtn2.style.background = '#111827';
+                }
+            }
+        }
+        
+        if (vinyl2) {
+            vinyl2.addEventListener('click', () => toggleMusic(2));
+        }
+        
+        // Modal for images
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image');
+        const modalCaption = document.getElementById('modal-caption');
+        const modalSub = document.getElementById('modal-subcaption');
+        
+        const memoryData = [
+            { title: "The Great Fishing Disaster of 2023", sub: "Lake Whatever • Summer 2023 • You still claim the fish were huge" },
+            { title: "World's Okayest Grill Master", sub: "Backyard BBQ • The burgers were... an experience" },
+            { title: '"I\'ll Just Take a Look" Energy', sub: "Garage • 2024 • We still have no idea what you did to the car" },
+            { title: "The Remote Control Incident", sub: "Living Room • Every Sunday • You won. Again." },
+            { title: "The Time You Were Actually Cool", sub: "Rare Sighting • We have one photo where you look like a movie star" },
+            { title: "Just Us (The Good One)", sub: "Our favorite photo • No silly faces. Just you being the best dad." },
+            { title: "The One We Don't Talk About", sub: "That legendary trip where everything went wrong but you made it hilarious anyway • Family lore now" }
+        ];
+        
+        function openModal(index) {
+            const card = document.querySelectorAll('.memory-card')[index];
+            const img = card.querySelector('img');
+            
+            if (img && img.src && !img.src.includes('data:image')) {
+                modalImg.src = img.src;
+            } else {
+                // Placeholder visual
+                modalImg.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22450%22 viewBox=%220 0 800 450%22%3E%3Crect width=%22800%22 height=%22450%22 fill=%22%23f1e7ff%22/%3E%3Ctext x=%22400%22 y=%22220%22 font-size=%2232%22 fill=%22%239ca3af%22 text-anchor=%22middle%22%3E📷%3C/text%3E%3Ctext x=%22400%22 y=%22270%22 font-size=%2220%22 fill=%22%236b7280%22 text-anchor=%22middle%22%3EAdd your photo in assets/images/%3C/text%3E%3C/svg%3E';
+            }
+            
+            modalCaption.textContent = memoryData[index].title;
+            modalSub.textContent = memoryData[index].sub;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        
+        function closeModal() {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+        
+        // Keyboard escape for modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+            if (e.key.toLowerCase() === 'j' && document.activeElement.tagName === 'BODY') {
+                newDadJoke();
+            }
+        });
+        
+        // Goofy confetti (same as page 1 but slightly different emojis)
+        function launchConfetti() {
+            const emojis = ['🎉', '📸', '❤️', '🛠️', '🍔', '🏆', '😂', '👨‍👧‍👦'];
+            
+            for (let i = 0; i < 38; i++) {
+                const confetto = document.createElement('div');
+                confetto.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                confetto.style.position = 'fixed';
+                confetto.style.left = Math.random() * window.innerWidth + 'px';
+                confetto.style.top = '-30px';
+                confetto.style.fontSize = (15 + Math.random() * 20) + 'px';
+                confetto.style.zIndex = '99999';
+                confetto.style.pointerEvents = 'none';
+                confetto.style.transition = `transform ${2.6 + Math.random() * 0.8}s cubic-bezier(0.22, 1, 0.36, 1), opacity 3s ease`;
+                confetto.style.opacity = (Math.random() * 0.5 + 0.55).toFixed(2);
+                
+                document.body.appendChild(confetto);
+                
+                const rot = Math.random() * 180 - 60;
+                
+                setTimeout(() => {
+                    confetto.style.transform = `translateY(${window.innerHeight + 150}px) rotate(${rot}deg)`;
+                    confetto.style.opacity = '0';
+                }, 30);
+                
+                setTimeout(() => {
+                    if (confetto.parentNode) confetto.parentNode.removeChild(confetto);
+                }, 4000);
+            }
+        }
+        
+        // Click any placeholder to remind user how to add photos
+        function setupPlaceholders() {
+            document.querySelectorAll('.memory-placeholder').forEach((ph, idx) => {
+                ph.addEventListener('click', () => {
+                    const msg = document.createElement('div');
+                    msg.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-white border border-orange-200 shadow-xl text-xs px-6 py-4 rounded-2xl max-w-xs text-center z-[200]';
+                    msg.innerHTML = `To add a real photo:<br>1. Drop your image in <span class="font-mono text-orange-500">assets/images/</span><br>2. Replace the placeholder div with an &lt;img&gt; tag<br><span class="text-[10px] text-slate-400">Slot ${idx + 1} ready for your memories</span>`;
+                    document.body.appendChild(msg);
+                    
+                    setTimeout(() => {
+                        msg.style.transition = 'all 0.3s';
+                        msg.style.opacity = '0';
+                        setTimeout(() => msg.remove(), 250);
+                    }, 4200);
+                });
+            });
+        }
+        
+        function initGallery() {
+            // Random dad joke on load (different from default)
+            setTimeout(() => {
+                const jokeEl = document.getElementById('dad-joke-text');
+                if (jokeEl) {
+                    currentJokeIndex = Math.floor(Math.random() * dadJokes.length);
+                    jokeEl.textContent = dadJokes[currentJokeIndex];
+                }
+            }, 800);
+            
+            setupPlaceholders();
+            
+            // Gentle animation for memory cards on scroll into view
+            const cards = document.querySelectorAll('.memory-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.transform = 'translateY(0)';
+                            entry.target.style.opacity = '1';
+                        }, i * 80);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0.96';
+                observer.observe(card);
+            });
+            
+            console.log('%c[Father\'s Day Site] Gallery page ready. Replace placeholders with real images in assets/images/', 'color:#64748b');
+        }
+        
+        window.onload = initGallery;
+    </script>
+</body>
+</html>
